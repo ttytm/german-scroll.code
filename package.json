@@ -1,0 +1,123 @@
+{
+	"name": "german-scroll",
+	"displayName": "german-scroll",
+	"description": "Vim like scrolling that obeys to the rules. Preserves folds and respects scrollOff.",
+	"publisher": "Turiiya",
+	"license": "MIT",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"categories": [
+		"Keymaps"
+	],
+	"keywords": [
+		"keyboard",
+		"navigation",
+		"scrolling",
+		"vim",
+		"neovim"
+	],
+	"activationEvents": [
+		"onCommand:germanScroll.arminUp",
+		"onCommand:germanScroll.arminDown",
+		"onCommand:germanScroll.bertholdUp",
+		"onCommand:germanScroll.bertholdDown",
+		"onCommand:germanScroll.christaUp",
+		"onCommand:germanScroll.christaDown",
+		"onCommand:germanScroll.printPos"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "germanScroll",
+			"properties": {
+				"germanScroll.armin": {
+					"type": [
+						"number",
+						"string"
+					],
+					"default": 5
+				},
+				"germanScroll.berthold": {
+					"type": [
+						"number",
+						"string"
+					],
+					"default": "halfPage"
+				},
+				"germanScroll.christa": {
+					"type": [
+						"number",
+						"string"
+					],
+					"default": "page"
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "germanScroll.printPos",
+				"key": "ctrl+shift+/",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.arminDown",
+				"key": "ctrl+e",
+				"mac": "cmd+e",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.arminUp",
+				"key": "ctrl+y",
+				"mac": "cmd+y",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.bertholdDown",
+				"key": "ctrl+d",
+				"mac": "cmd+d",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.bertholdUp",
+				"key": "ctrl+u",
+				"mac": "cmd+u",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.christaDown",
+				"key": "ctrl+f",
+				"mac": "cmd+f",
+				"when": "editorTextFocus && vim.active"
+			},
+			{
+				"command": "germanScroll.christaUp",
+				"key": "ctrl+b",
+				"mac": "cmd+b",
+				"when": "editorTextFocus && vim.active"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.68.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
+		"eslint": "^8.16.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.2",
+		"@vscode/test-electron": "^2.1.3"
+	}
+}
