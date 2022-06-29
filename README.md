@@ -1,17 +1,18 @@
 # german-scroll
 
-<div align="center">
-     <img src="assets/german-scroll-logo.png" width="200" />
+<div align="center" style="margin-bottom: 2em;">
+     <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
 
 > Scrolling that behaves.
 
 </div>
+
 This plugins offers Vim-like scroll commands whilst aiming to fix some of the current keyboard scrolling bummers:
 
 -  Preserve folds
 -  Don't get stuck at folds
 -  Respect scrollOff
--  Keep cursor moving when document boundary is reached
+-  Keep the cursor moving when the document boundary is reached
 
 ## How To Use
 
@@ -81,19 +82,20 @@ _Default settings:_
 
 ## Additional Info:
 
-TODO: Coming fresh out the oven not having had many eyes on it using custom scroll values may behave unexpected
-Leave a start open an issue submit a PR
+Since it's fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly. If you experience any of these, please feel free to open an issue or submit a PR.
 
-The repo holds is a `dev` branch containing a bunch of console logs that may be useful for debugging.<br>
-If you experience a problem and want to give it a shot you can check it out.
+If you feel like tinkering with it yourself, the repo holds a `dev` branch containing a bunch of console logs that may be useful for debugging.
+
+Also, showing some love and leaving a star on the repo or rating the extension always helps ❤️.
 
 ### Known issues:
 
--  Having vscode's smooth scrolling setting enabled and executing a persistent scroll with the key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's api.
+-  Having vscode's smooth scrolling setting enabled and executing a persistent scroll with the key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's API.
 -  When the cursor is placed between folded sections and a scroll command with a number value is used there are potential scrolling inconsistencies.
--  Selection become invisible when scrolling out of current visible range (the selection reappears when moving the cursor after scrolling).
--  There probably should be additional settings that allow users to disable behaviors like continuation of cursor movement when the document boundary is reached.
+-  Selection becomes invisible when scrolling out of the current visible range (the selection reappears when moving the cursor after scrolling).
+-  There probably should be additional settings that allow users to disable behaviors like the continuation of cursor movement when the document boundary is reached.
 
 ### Credits & Sources that served as inspiration
 
--  Viewport scroll
+-  [Scroll Viewport](https://github.com/bmalehorn/vscode-scroll-viewport)
+-  [Neoscroll](https://github.com/karb94/neoscroll.nvim)

@@ -3,7 +3,7 @@ import { moveViewport, moveCursor, alignViewport, calculateRanges } from "./util
 import { ScrollDirection, ScrollDistance, Scroller, SCROLLERS } from "./types";
 
 // TODO: should also be reloaded on config change
-const scrollOff = vscode.workspace.getConfiguration('editor').get('cursorSurroundingLines') as number;
+let scrollOff = vscode.workspace.getConfiguration('editor').get('cursorSurroundingLines') as number;
 
 const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
    const editor = vscode.window.activeTextEditor!;
@@ -30,9 +30,9 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
 
    let distanceValue = distance === 'halfPage' ? Math.floor(allSegmentsRangeValue / 2) : distance === 'page' ? allSegmentsRangeValue : distance;
 
-   // - [ ] TODO: implement working configuration reload
+   // - [x] TODO: implement working configuration reload
    // - [x] TODO: adjust default key maps
-   // - [ ] TODO: update package json. E.g., add repo
+   // - [x] TODO: update package json. E.g., add repo
 
    // Logs
    (() => { // iife to add folding ability
@@ -116,12 +116,18 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
       moveViewport(direction, distance);
    }
 };
-const getConfig = (scroller: string) =>
-   vscode.workspace.getConfiguration("germanScroll").get(scroller) as ScrollDistance;
+
+const getConfig = (scroller: string) => vscode.workspace.getConfiguration("germanScroll").get(scroller) as ScrollDistance;
 
 export function activate(context: vscode.ExtensionContext) {
    SCROLLERS.forEach((scroller: Scroller) => {
       let config = getConfig(scroller);
+
+      vscode.workspace.onDidChangeConfiguration(async event => {
+         if (event.affectsConfiguration("germanScroll")) config = getConfig(scroller);
+         if (event.affectsConfiguration("editor.cursorSurroundingLines")) scrollOff = vscode.workspace.getConfiguration('editor').get('cursorSurroundingLines') as number;
+      });
+
       context.subscriptions.push(
          vscode.commands.registerCommand(`germanScroll.${scroller}Down`, () => scroll("down", config)),
          vscode.commands.registerCommand(`germanScroll.${scroller}Up`, () => scroll("up", config)),

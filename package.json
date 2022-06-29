@@ -4,6 +4,11 @@
 	"description": "Vim like scrolling that obeys to the rules. Preserves folds and respects scrollOff.",
 	"publisher": "Turiiya",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tobealive/german-scroll.code.git"
+	},
+	"icon": "assets/german-scroll-logo.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.68.0"
