@@ -18,14 +18,14 @@ This plugins offers Vim-like scroll commands whilst aiming to fix some of the cu
 
 You get three scrolling motions.
 
-| **Scroller** | **Default Keymaps**       |
-| ------------ | ------------------------- |
-| Armin        | ️️⬆<kbd>Ctrl+Down</kbd>️  |
-|              | ⬇<kbd>Ctrl+Up</kbd>       |
-| Berthold     | ⬆<kbd>Ctrl+PageUp</kbd>   |
-|              | ⬇<kbd>Ctrl+PageDown</kbd> |
-| Christa      | ⬆<kbd>PageUp</kbd>        |
-|              | ⬇<kbd>PageDown</kbd>      |
+| **Scroller** | **Default Keymaps**        |
+| ------------ | -------------------------- |
+| Armin        | ️️⬆ <kbd>Ctrl+Down</kbd>️  |
+|              | ⬇ <kbd>Ctrl+Up</kbd>       |
+| Berthold     | ⬆ <kbd>Ctrl+PageUp</kbd>   |
+|              | ⬇ <kbd>Ctrl+PageDown</kbd> |
+| Christa      | ⬆ <kbd>PageUp</kbd>        |
+|              | ⬇ <kbd>PageDown</kbd>      |
 
 ### ⚙️ Settings
 
@@ -46,37 +46,37 @@ _Default settings:_
    "command": "germanScroll.arminUp",
    "key": "ctrl+y",
    "mac": "cmd+y",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 {
    "command": "germanScroll.arminDown",
    "key": "ctrl+e",
    "mac": "cmd+e",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 {
    "command": "germanScroll.bertholdUp",
    "key": "ctrl+u",
    "mac": "cmd+u",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 {
    "command": "germanScroll.bertholdDown",
    "key": "ctrl+d",
    "mac": "cmd+d",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 {
    "command": "germanScroll.christaUp",
    "key": "ctrl+b",
    "mac": "cmd+b",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 {
    "command": "germanScroll.christaDown",
    "key": "ctrl+f",
    "mac": "cmd+f",
-   "when": "editorTextFocus && vim.mode != 'Insert'"
+   "when": "vim.active && editorTextFocus && vim.mode != 'Insert'"
 },
 ```
 
@@ -88,14 +88,14 @@ If you feel like tinkering with it yourself, the repo holds a `dev` branch conta
 
 Also, showing some love and leaving a star on the repo or rating the extension always helps ❤️.
 
-### Known issues:
+### Known Issues:
 
 -  Having vscode's smooth scrolling setting enabled and executing a persistent scroll with the key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's API.
 -  When the cursor is placed between folded sections and a scroll command with a number value is used there are potential scrolling inconsistencies.
 -  Selection becomes invisible when scrolling out of the current visible range (the selection reappears when moving the cursor after scrolling).
 -  There probably should be additional settings that allow users to disable behaviors like the continuation of cursor movement when the document boundary is reached.
 
-### Credits & Sources that served as inspiration
+### Credits & Sources of Inspiration
 
 -  [Scroll Viewport](https://github.com/bmalehorn/vscode-scroll-viewport)
 -  [Neoscroll](https://github.com/karb94/neoscroll.nvim)
