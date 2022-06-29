@@ -1,4 +1,4 @@
-# german-scroll
+# ️german-scroll
 
 <div align="center" style="margin-bottom: 2em;">
      <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
@@ -7,14 +7,14 @@
 
 </div>
 
-This plugins offers Vim-like scroll commands whilst aiming to fix some of the current keyboard scrolling bummers:
+**This plugins offers Vim-like scroll commands whilst aiming to fix some of the current keyboard scrolling bummers:**
 
 -  Preserve folds
 -  Don't get stuck at folds
 -  Respect scrollOff
 -  Keep the cursor moving when the document boundary is reached
 
-## How To Use
+## ⌨️ How To Use
 
 You get three scrolling motions.
 
@@ -80,7 +80,7 @@ _Default settings:_
 },
 ```
 
-## Additional Info:
+## 🗒️ Additional Info:
 
 Since it's fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly. If you experience any of these, please feel free to open an issue or submit a PR.
 
