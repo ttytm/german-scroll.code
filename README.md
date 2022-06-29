@@ -70,7 +70,7 @@ _Default settings:_
    "key": "ctrl+b",
    "mac": "cmd+b",
    "when": "editorTextFocus && vim.mode != 'Insert'"
-}
+},
 {
    "command": "germanScroll.christaDown",
    "key": "ctrl+f",
@@ -89,7 +89,7 @@ If you experience a problem and want to give it a shot you can check it out.
 
 ### Known issues:
 
--  Having vscode's smooth scrolling setting enabled and scrolling with key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's api.
+-  Having vscode's smooth scrolling setting enabled and executing a persistent scroll with the key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's api.
 -  When the cursor is placed between folded sections and a scroll command with a number value is used there are potential scrolling inconsistencies.
 -  Selection become invisible when scrolling out of current visible range (the selection reappears when moving the cursor after scrolling).
 -  There probably should be additional settings that allow users to disable behaviors like continuation of cursor movement when the document boundary is reached.

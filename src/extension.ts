@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { moveViewport, moveCursor, alignViewport, calculateRanges } from "./utils";
 import { ScrollDirection, ScrollDistance, Scroller, SCROLLERS } from "./types";
 
+// TODO: should also be reloaded on config change
 const scrollOff = vscode.workspace.getConfiguration('editor').get('cursorSurroundingLines') as number;
 
 const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
@@ -27,11 +28,14 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
       hasScrollOffContact = (hasNumberDistance && (direction === 'down' && scrollOff >= firstSegmentDistanceStart))
          || (hasNumberDistance && (direction === 'up' && scrollOff + 1 >= lastSegmentDistanceEnd));
 
-   // TODO: implement working configuration reload
-   // TODO: adjust default key maps
-   // TODO: update package json. E.g., add repo
+   let distanceValue = distance === 'halfPage' ? Math.floor(allSegmentsRangeValue / 2) : distance === 'page' ? allSegmentsRangeValue : distance;
+
+   // - [ ] TODO: implement working configuration reload
+   // - [x] TODO: adjust default key maps
+   // - [ ] TODO: update package json. E.g., add repo
+
    // Logs
-   (() => {
+   (() => { // iife to add folding ability
       console.log('{ == #log start ==>');
       console.log('#numberOfSegments', visibleRanges.length);
       console.log('------------------------------------------');
@@ -41,21 +45,18 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
       console.log('#last rangeStart:', lastSegmentRangeStart, '| rangeEnd', lastSegmentRangeEnd);
       console.log('#last: distStart:', lastSegmentDistanceStart, '| distEnd', lastSegmentDistanceEnd);
       console.log('------------------------------------------');
-      console.log('------------------------------------------');
       console.log('#all rangeStart:', allSegmentsRanges.start, '| rangeEnd:', allSegmentsRanges.end);
       console.log('#all rangeVal:', allSegmentsRangeValue);
       console.log('------------------------------------------');
       console.log('cursorPos:', cursorPosition);
+      /*       for (let i = 0; i < visibleRanges.length; i++) {
+               console.log(`#SEGMENT${i} rangeStart:`, visibleRanges[i].start.line, '| rangeEnd', visibleRanges[i].end.line);
+               console.log(`#SEGMENT${i} distStart:`, cursorPosition - visibleRanges[i].start.line, '| distEnd', visibleRanges[i].start.line - cursorPosition);
+               console.log('------------------------------------------');
+            } */
       console.log('<== #log end }');
    })();
-
-   /*    for (let i = 0; i < visibleRanges.length; i++) {
-         console.log('------------------------------------------');
-         console.log(`#SEGMENT${i} rangeStart:`, visibleRanges[i].start.line, '| rangeEnd', visibleRanges[i].end.line);
-         console.log(`#SEGMENT${i} distStart:`, cursorPosition - visibleRanges[i].start.line, '| distEnd', visibleRanges[i].start.line - cursorPosition);
-         console.log('------------------------------------------');
-      } */
-   // if cursorPostion in one of the segments is inside scrolloff and first or last segment range is inside scrolloff
+   if (distance === 0) return; // do not scroll when using printPos command
 
    // Fix cursor moves to end of line when scrolling beyond last line
    if (hasNumberDistance && direction === 'down' && allSegmentsRangeValue <= scrollOff + distance) {
@@ -67,15 +68,14 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
    // Keep cursor moving when top boundary is reached
    else if (firstSegmentRangeStart === 0 && direction === 'up') {
       console.log('#moveCurosor');
-      const distanceValue = distance === 'halfPage' ? Math.floor(allSegmentsRangeValue / 2) : distance === 'page' ? allSegmentsRangeValue : distance;
       moveViewport(direction, distanceValue);
       moveCursor(direction, distanceValue);
    }
    // Scroll from top boundary 
    else if (hasNumberDistance && firstSegmentRangeStart === 0 && direction === 'down') {
       console.log('#fromTop');
-      moveViewport(direction, distance as number * 2);
-      alignViewport();
+      moveViewport(direction, distance + scrollOff);
+      alignViewport('up');
    }
    // Scroll when lines to top boundary remain
    else if (firstSegmentRangeStart > 0 && firstSegmentRangeStart <= scrollOff && direction === 'up') {
@@ -86,12 +86,13 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
    // Scroll when visibleRange is mutated through folds
    else if (hasNumberDistance && (hasFolds)) {
       const hasFoldBelow = lastSegmentDistanceStart <= scrollOff,
-         hasFoldAbove = firstSegmentDistanceEnd <= scrollOff,
+         hasFoldAbove = firstSegmentDistanceEnd <= scrollOff;
 
-         distanceValue = direction === 'down' && hasFoldBelow
-            ? distance + scrollOff + 1 :
-            direction === 'up' && hasFoldAbove ? distance + scrollOff + 1
-               : distance;
+      distanceValue = direction === 'down' && hasFoldBelow
+         ? distance + scrollOff + 1
+         : direction === 'up' && hasFoldAbove
+            ? distance + scrollOff + 1
+            : distance;
 
       console.log('#mutaed | distanceValue: ', distanceValue);
       moveViewport(direction, distanceValue);
@@ -113,7 +114,6 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
    else {
       console.log('#default');
       moveViewport(direction, distance);
-      if (hasScrollOffContact) moveCursor(direction, distance < scrollOff ? distance : scrollOff);
    }
 };
 const getConfig = (scroller: string) =>
@@ -127,6 +127,7 @@ export function activate(context: vscode.ExtensionContext) {
          vscode.commands.registerCommand(`germanScroll.${scroller}Up`, () => scroll("up", config)),
       );
    });
+   // TODO: remove for release as well in package.json
    vscode.commands.registerCommand(`germanScroll.printPos`, () => scroll('down', 0));
 }
 

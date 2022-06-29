@@ -59,43 +59,43 @@
 			{
 				"command": "germanScroll.printPos",
 				"key": "ctrl+shift+/",
-				"when": "editorTextFocus && vim.active"
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.arminDown",
-				"key": "ctrl+e",
-				"mac": "cmd+e",
-				"when": "editorTextFocus && vim.active"
+				"key": "ctrl+down",
+				"mac": "cmd+down",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.arminUp",
-				"key": "ctrl+y",
-				"mac": "cmd+y",
-				"when": "editorTextFocus && vim.active"
+				"key": "ctrl+up",
+				"mac": "cmd+up",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.bertholdDown",
-				"key": "ctrl+d",
-				"mac": "cmd+d",
-				"when": "editorTextFocus && vim.active"
+				"key": "ctrl+pagedown",
+				"mac": "cmd+pagedown",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.bertholdUp",
-				"key": "ctrl+u",
-				"mac": "cmd+u",
-				"when": "editorTextFocus && vim.active"
+				"key": "ctrl+up",
+				"mac": "cmd+up",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.christaDown",
-				"key": "ctrl+f",
-				"mac": "cmd+f",
-				"when": "editorTextFocus && vim.active"
+				"key": "pagedown",
+				"mac": "pagedown",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "germanScroll.christaUp",
-				"key": "ctrl+b",
-				"mac": "cmd+b",
-				"when": "editorTextFocus && vim.active"
+				"key": "pageup",
+				"mac": "pageup",
+				"when": "editorTextFocus"
 			}
 		]
 	},
