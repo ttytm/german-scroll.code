@@ -1,4 +1,4 @@
-# ️german-scroll
+# ️german-scroll\*
 
 <div align="center" style="margin-bottom: 2em;">
      <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
@@ -87,6 +87,8 @@ Since it's fresh out of the oven and not many eyes have been on it yet, there ma
 If you feel like tinkering with it yourself, the repo holds a `dev` branch containing a bunch of console logs that may be useful for debugging.
 
 Also, showing some love and leaving a star on the repo or rating the extension always helps ❤️.
+
+\*Especially in today's times it's hard to always be politically correct. Additionally the high interconnectedness of people with different cultural backgrounds makes it impossible to prevent misunderstandings sometimes. Therefore I want to add the info that the plugins name and theme is taking the mickey out of our(being from germany myself) german correctness and not a nationalistic discrimination of others.
 
 ### Known Issues:
 
