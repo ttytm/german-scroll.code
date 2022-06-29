@@ -9,9 +9,13 @@ export const moveCursor = (direction: ScrollDirection, distance: ScrollDistance)
    vscode.commands.executeCommand('cursorMove', { to: direction, by: 'wrappedLine', value: distance });
 };
 
-export const alignViewport = () => {
-   vscode.commands.executeCommand('cursorMove', { to: 'up', by: 'halfLine' });
-   vscode.commands.executeCommand('cursorMove', { to: 'down', by: 'halfline' });
+export const alignViewport = (direction?: ScrollDirection) => {
+   if (direction) {
+      vscode.commands.executeCommand('cursorMove', { to: direction, by: 'wrappedLine' });
+      return;
+   }
+   vscode.commands.executeCommand('cursorMove', { to: 'up', by: 'wrappedLine' });
+   vscode.commands.executeCommand('cursorMove', { to: 'down', by: 'wrappedLine' });
 };
 
 // Credits to @bmalehorn for this calcs
