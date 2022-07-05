@@ -27,26 +27,22 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
 
    // Fix cursor moves to end of line when scrolling beyond last line
    if (hasNumberDistance && direction === 'down' && rangeValue <= scrollOff + distance) {
-      console.log('#fix');
       moveViewport(direction, rangeValue - scrollOff);
       moveCursor(direction, rangeValue - scrollOff);
       // vscode.commands.executeCommand('cursorMove', { to: 'viewPortBottom', by: 'wrappedLine' });
    }
    // Keep cursor moving when top boundary is reached
    else if (visibleRanges[0].start.line === 0 && direction === 'up') {
-      console.log('#moveCurosor');
       moveViewport(direction, distanceValue);
       moveCursor(direction, distanceValue);
    }
    // Scroll from top boundary 
    else if (hasNumberDistance && visibleRanges[0].start.line === 0 && direction === 'down') {
-      console.log('#fromTop');
       moveViewport(direction, distance + scrollOff);
       alignViewport('up');
    }
    // Scroll when lines to top boundary remain
    else if (visibleRanges[0].start.line > 0 && visibleRanges[0].start.line <= scrollOff && direction === 'up') {
-      console.log('#remainingLines');
       moveViewport(direction, ranges.start);
       moveCursor(direction, ranges.start);
    }
@@ -61,25 +57,21 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
             ? distance + scrollOff + 1
             : distance;
 
-      console.log('#mutaed | distanceValue: ', distanceValue);
       moveViewport(direction, distanceValue);
       alignViewport();
    }
    // Scroll when cursor is touching scrollOff
    else if (hasScrollOffContact) {
-      console.log('#touchingScrolloff');
       moveViewport(direction, distance);
       moveCursor(direction, distance < scrollOff ? distance : scrollOff);
    }
    // Scroll when using string distance values
    else if (!hasNumberDistance) {
-      console.log('#stringDistance');
       vscode.commands.executeCommand('editorScroll', { to: direction, by: distance, revealCursor: true });
       alignViewport();
    }
    // Scroll default
    else {
-      console.log('#default');
       moveViewport(direction, distance);
    }
 };
