@@ -58,7 +58,7 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
             : distance;
 
       moveViewport(direction, distanceValue);
-      alignViewport();
+      alignViewport('up');
    }
    // Scroll when cursor is touching scrollOff
    else if (hasScrollOffContact) {
