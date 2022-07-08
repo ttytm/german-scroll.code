@@ -52,13 +52,12 @@ const scroll = (direction: ScrollDirection, distance: ScrollDistance) => {
          hasFoldAbove = firstSegmentDistanceEnd <= scrollOff;
 
       distanceValue = direction === 'down' && hasFoldBelow
-         ? distance + scrollOff + 1
-         : direction === 'up' && hasFoldAbove
-            ? distance + scrollOff + 1
-            : distance;
+         || direction === 'up' && hasFoldAbove
+         ? distance + scrollOff
+         : distance;
 
       moveViewport(direction, distanceValue);
-      alignViewport('up');
+      alignViewport(direction);
    }
    // Scroll when cursor is touching scrollOff
    else if (hasScrollOffContact) {
