@@ -7,12 +7,18 @@
 
 </div>
 
-**This plugins offers Vim-like scroll commands whilst aiming to fix some of the current keyboard scrolling bummers:**
+**This plugins offers Vim-like scroll commands whilst fixing some of the current keyboard scrolling bummers:**
 
--  Preserve folds
--  Don't get stuck at folds
--  Respect scrollOff
--  Keep the cursor moving when the document boundary is reached
+-  Preserves folds
+-  Won't get stuck at folds
+-  Respects scrollOff
+-  Keeps the cursor moving when the document boundary is reached
+
+_Basically, it aims to make scrolling behave just like it's expected from it._
+
+## Preview
+
+<img src="https://github.com/tobealive/storage/blob/main/assets/preview.gif?raw=true" width="800" style="margin-bottom: 2em;"/>
 
 ## ⌨️ How To Use
 
@@ -82,20 +88,24 @@ _Default settings:_
 
 ## 🗒️ Additional Info:
 
-Since it's fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly. If you experience any of these, please feel free to open an issue or submit a PR.
+Using this extension for quiet while and being satisfied with it's behavior it should make it's way to the public.
+Since it's still pretty fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly.
+If you experience any of these, please feel free to open an issue or submit a PR.
 
-If you feel like tinkering with it yourself, the repo holds a `dev` branch containing a bunch of console logs that may be useful for debugging.
+If you feel like tinkering with it yourself, the repo holds a `dev` branch containing a bunch of console logs that may be useful to analyze scrolling.
 
-Also, showing some love and leaving a star on the repo or rating the extension always helps ❤️.
+And of course showing some love and leaving a star on the repo or rating the extension always helps ❤️.
 
 _\*Especially in today's times it's hard to always be politically correct. Additionally the high interconnectedness of people with different cultural backgrounds makes it impossible to prevent misunderstandings sometimes. Therefore I want to add the info that the plugins name and theme is taking the mickey out of our(being from germany myself) german correctness and not a nationalistic discrimination of others._
 
 ### Known Issues:
 
--  Having vscode's smooth scrolling setting enabled and executing a persistent scroll with the key held down can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's API.
--  When the cursor is placed between folded sections and a scroll command with a number value is used there are potential scrolling inconsistencies.
--  Selection becomes invisible when scrolling out of the current visible range (the selection reappears when moving the cursor after scrolling).
--  There probably should be additional settings that allow users to disable behaviors like the continuation of cursor movement when the document boundary is reached.
+Nothing that would break something but some small things could be observed:
+
+-  When vscode's smooth scrolling setting is enabled and executing a persistent scroll (with the key held down) it can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's API.
+-  When the cursor is placed between folded sections and a scroll command with a number value is used there might happen a occasional scrolling inconsistency.
+-  Scrolling in VisualMode beyond of the current visible range a selection becomes invisible (the selection reappears when moving the cursor after scrolling).
+-  There probably should be additional settings that allow a user to disable behaviors like the continuation of cursor movement when the document boundary is reached.
 
 ### Credits & Sources of Inspiration
 
