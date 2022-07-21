@@ -1,7 +1,7 @@
 # ️german-scroll\*
 
 <div align="center" style="margin-bottom: 2em;">
-     <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
+   <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
 
 > Scrolling that behaves.
 
@@ -16,10 +16,6 @@
 
 _Basically, it aims to make scrolling behave just like it's expected from it._
 
-## Preview
-
-<img src="https://github.com/tobealive/storage/blob/main/assets/preview.gif?raw=true" width="800" style="margin-bottom: 2em;"/>
-
 ## ⌨️ How To Use
 
 You get three scrolling motions.
@@ -32,6 +28,16 @@ You get three scrolling motions.
 |              | ⬇ <kbd>Ctrl+PageDown</kbd> |
 | Christa      | ⬆ <kbd>PageUp</kbd>        |
 |              | ⬇ <kbd>PageDown</kbd>      |
+
+## Preview
+
+Link to a quick and dirty video example using german-scroll with with VSCodeVim.
+
+<div align="center" style="margin-bottom: 2em;">
+   <a href="https://youtu.be/jkEXTHASJGw" target="_blank">
+      <img src="https://github.com/tobealive/storage/blob/main/assets/german-scroll-preview.gif?raw=true" width="800"/>
+   </a>
+</div>
 
 ### ⚙️ Settings
 
