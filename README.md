@@ -9,10 +9,10 @@
 
 **This plugins offers Vim-like scroll commands whilst fixing some of the current keyboard scrolling bummers:**
 
--  Preserves folds
--  Won't get stuck at folds
--  Respects scrollOff
--  Keeps the cursor moving when the document boundary is reached
+- Preserves folds
+- Won't get stuck at folds
+- Respects scrollOff
+- Keeps the cursor moving when the document boundary is reached
 
 _Basically, it aims to make scrolling behave just like it's expected from it._
 
@@ -22,7 +22,7 @@ You get three scrolling motions.
 
 | **Scroller** | **Default Keymaps**        |
 | ------------ | -------------------------- |
-| Armin        | ️️⬆ <kbd>Ctrl+Down</kbd>️  |
+| Armin        | ️️⬆ <kbd>Ctrl+Down</kbd>️    |
 |              | ⬇ <kbd>Ctrl+Up</kbd>       |
 | Berthold     | ⬆ <kbd>Ctrl+PageUp</kbd>   |
 |              | ⬇ <kbd>Ctrl+PageDown</kbd> |
@@ -31,10 +31,10 @@ You get three scrolling motions.
 
 ## Preview
 
-Link to a quick and dirty video example using german-scroll with with VSCodeVim.
+Links to a quick and dirty video example using german-scroll in VSCodium in combination with VSCodeVim.
 
 <div align="center" style="margin-bottom: 2em;">
-   <a href="https://youtu.be/jkEXTHASJGw" target="_blank">
+   <a href="https://github.com/tobealive/german-scroll.code/discussions/3" target="_blank">
       <img src="https://github.com/tobealive/storage/blob/main/assets/german-scroll-preview.gif?raw=true" width="800"/>
    </a>
 </div>
@@ -94,11 +94,11 @@ _Default settings:_
 
 ## 🗒️ Additional Info:
 
-Using this extension for quiet while and being satisfied with it's behavior it should make it's way to the public.
+After using this extension for a while and being happy with its behavior, it should make its way into the public domain.
 Since it's still pretty fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly.
-If you experience any of these, please feel free to open an issue or submit a PR.
+If you notice any of these issues, feel free to open an issue or submit a PR.
 
-If you feel like tinkering with it yourself, the repo holds a `dev` branch containing a bunch of console logs that may be useful to analyze scrolling.
+If you feel like tinkering with it yourself, the repo holds a `dev` branch that contains a bunch of console logs that might be useful to analyze scrolling.
 
 And of course showing some love and leaving a star on the repo or rating the extension always helps ❤️.
 
@@ -108,12 +108,12 @@ _\*Especially in today's times it's hard to always be politically correct. Addit
 
 Nothing that would break something but some small things could be observed:
 
--  When vscode's smooth scrolling setting is enabled and executing a persistent scroll (with the key held down) it can result in minor inconsistencies during that scrolling process. The reason is that it's not possible to properly implement an async await functionality for many of the commands that are accessible via vscode's API.
--  When the cursor is placed between folded sections and a scroll command with a number value is used there might happen a occasional scrolling inconsistency.
--  Scrolling in VisualMode beyond of the current visible range a selection becomes invisible (the selection reappears when moving the cursor after scrolling).
--  There probably should be additional settings that allow a user to disable behaviors like the continuation of cursor movement when the document boundary is reached.
+- When vscode's "smooth scrolling" setting is enabled and persistent scrolling (pressing and holding the key) is executed, there can be small inconsistencies during scrolling. The reason for this is that it is not possible to implement async await functionality for many of the commands accessible through vscode's API.
+- When placing the cursor between folded sections and using a scroll command with a numeric value, small scrolling inconsistencies can occasionally occur.
+- When scrolling in VisualMode beyond the currently visible area, the selection becomes invisible (it reappears when you move the cursor after scrolling).
+- There should probably be additional settings that allow the user to disable behaviors such as continuing cursor movement when the document boundary is reached.
 
 ### Credits & Sources of Inspiration
 
--  [Scroll Viewport](https://github.com/bmalehorn/vscode-scroll-viewport)
--  [Neoscroll](https://github.com/karb94/neoscroll.nvim)
+- [Scroll Viewport](https://github.com/bmalehorn/vscode-scroll-viewport)
+- [Neoscroll](https://github.com/karb94/neoscroll.nvim)
