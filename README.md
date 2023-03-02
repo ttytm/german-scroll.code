@@ -1,7 +1,7 @@
 # ️german-scroll\*
 
 <div align="center" style="margin-bottom: 2em;">
-   <img src="https://user-images.githubusercontent.com/34311583/222405848-90c9e758-ab71-419a-9dbf-5d9492105760.png" width="200" style="margin-bottom: 1em;"/>
+   <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
 
 > Scrolling that behaves.
 
