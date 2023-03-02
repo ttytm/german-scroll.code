@@ -1,7 +1,7 @@
 # ️german-scroll\*
 
 <div align="center" style="margin-bottom: 2em;">
-   <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
+   <img src="https://user-images.githubusercontent.com/34311583/222405848-90c9e758-ab71-419a-9dbf-5d9492105760.png" width="200" style="margin-bottom: 1em;"/>
 
 > Scrolling that behaves.
 
@@ -96,9 +96,8 @@ _Default settings:_
 
 After using this extension for a while and being happy with its behavior, it should make its way into the public domain.
 Since it's still pretty fresh out of the oven and not many eyes have been on it yet, there may be scenarios where the scrolling behaves unexpectedly.
-If you notice any of these issues, feel free to open an issue or submit a PR.
 
-If you feel like tinkering with it yourself, the repo holds a `dev` branch that contains a bunch of console logs that might be useful to analyze scrolling.
+If you notice any of these issues, feel free to open an issue or submit a PR.
 
 And of course showing some love and leaving a star on the repo or rating the extension always helps ❤️.
 
@@ -108,9 +107,10 @@ _\*Especially in today's times it's hard to always be politically correct. Addit
 
 Nothing that would break something but some small things could be observed:
 
-- When vscode's "smooth scrolling" setting is enabled and persistent scrolling (pressing and holding the key) is executed, there can be small inconsistencies during scrolling. The reason for this is that it is not possible to implement async await functionality for many of the commands accessible through vscode's API.
-- When placing the cursor between folded sections and using a scroll command with a numeric value, small scrolling inconsistencies can occasionally occur.
-- When scrolling in VisualMode beyond the currently visible area, the selection becomes invisible (it reappears when you move the cursor after scrolling).
+- Scrolling inconsistencies may occur:
+   - During fast scrolling (e.g., pressing and holding the key) with the "smooth scrolling" setting enabled.
+   - During scrolling actions between folded sections.
+- Selection becomes invisible when scrolling in VisualMode beyond the currently visible range (it reappears when moving the cursor after scrolling).
 - There should probably be additional settings that allow the user to disable behaviors such as continuing cursor movement when the document boundary is reached.
 
 ### Credits & Sources of Inspiration
