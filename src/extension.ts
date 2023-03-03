@@ -11,14 +11,14 @@ const scroll = (scroller: Scroller, direction: ScrollDirection, distance: Scroll
 	let scrollDistance = distance === "halfPage" ? visibleLines / 2 : distance === "page" ? visibleLines : distance;
 
 	switch (true) {
-		// Keep cursor moving when top boundary is reached
-		case ranges[0].start.line === 0 && direction === "up":
-			moveViewport(direction, scrollDistance);
-			moveCursor(direction, scrollDistance);
-			break;
 		// Scroll from top boundary
 		case ranges[0].start.line === 0 && direction === "down":
 			moveViewport(direction, scrollDistance + scrollOff);
+			moveCursor(direction, scrollDistance);
+			break;
+		// Keep cursor moving when top boundary is reached
+		case ranges[0].start.line === 0 && direction === "up":
+			moveViewport(direction, scrollDistance);
 			moveCursor(direction, scrollDistance);
 			break;
 		// Simulating Neovims behavior, ctrl+e / ctrl+y favors scrolling the viewport solely, instead of moving the cursor simultaneously
