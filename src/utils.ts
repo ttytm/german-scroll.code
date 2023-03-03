@@ -2,11 +2,10 @@ import * as vscode from "vscode";
 import { ScrollDirection, ScrollDistance } from "./types";
 
 const calcVisibleLines = (ranges: readonly vscode.Range[]): number => {
-	// viewportBottomLine - viewportTopLine
-	const linesInViewport = ranges[ranges.length - 1].end.line - ranges[0].start.line;
-	if (ranges.length === 0) return linesInViewport;
+	if (ranges.length <= 1) return ranges[ranges.length - 1].end.line - ranges[0].start.line;
 
 	const visibleLines = ranges.reduce((acc, range) => {
+		console.log("%cutils.ts line:7 folds", "color: #007acc;");
 		return acc + range.end.line - range.start.line + 1;
 	}, 0);
 
