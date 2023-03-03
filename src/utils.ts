@@ -5,7 +5,6 @@ const calcVisibleLines = (ranges: readonly vscode.Range[]): number => {
 	if (ranges.length <= 1) return ranges[ranges.length - 1].end.line - ranges[0].start.line;
 
 	const visibleLines = ranges.reduce((acc, range) => {
-		console.log("%cutils.ts line:7 folds", "color: #007acc;");
 		return acc + range.end.line - range.start.line + 1;
 	}, 0);
 
