@@ -8,7 +8,8 @@ const scroll = (scroller: Scroller, direction: ScrollDirection, distance: Scroll
 	const editor = vscode.window.activeTextEditor!;
 	const ranges = editor.visibleRanges; // including potential folds
 	const visibleLines = calcVisibleLines(ranges);
-	let scrollDistance = distance === "halfPage" ? visibleLines / 2 : distance === "page" ? visibleLines : distance;
+	let scrollDistance =
+		distance === "halfPage" ? Math.floor(visibleLines / 2) : distance === "page" ? visibleLines : distance;
 
 	switch (true) {
 		// Scroll from top boundary
