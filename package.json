@@ -80,8 +80,8 @@
 			},
 			{
 				"command": "germanScroll.bertholdUp",
-				"key": "ctrl+up",
-				"mac": "cmd+up",
+				"key": "ctrl+pageup",
+				"mac": "cmd+pageup",
 				"when": "editorTextFocus"
 			},
 			{
