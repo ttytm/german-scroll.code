@@ -33,13 +33,4 @@ const moveCursor = (direction: ScrollDirection, distance: ScrollDistance) => {
 	});
 };
 
-const alignViewport = (direction?: ScrollDirection) => {
-	if (direction) {
-		vscode.commands.executeCommand("cursorMove", { to: direction, by: "wrappedLine" });
-		return;
-	}
-	vscode.commands.executeCommand("cursorMove", { to: "up", by: "wrappedLine" });
-	vscode.commands.executeCommand("cursorMove", { to: "down", by: "wrappedLine" });
-};
-
-export { calcVisibleLines, moveViewport, moveCursor, alignViewport };
+export { calcVisibleLines, moveViewport, moveCursor };

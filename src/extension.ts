@@ -1,15 +1,17 @@
 import * as vscode from "vscode";
-import { moveViewport, moveCursor, alignViewport, calcVisibleLines } from "./utils";
+import { moveViewport, moveCursor, calcVisibleLines } from "./utils";
 import { ScrollDirection, ScrollDistance, Scroller, SCROLLERS } from "./types";
 
 let scrollOff = vscode.workspace.getConfiguration("editor").get("cursorSurroundingLines") as number;
 
 const scroll = (scroller: Scroller, direction: ScrollDirection, distance: ScrollDistance) => {
-	const editor = vscode.window.activeTextEditor!;
-	const ranges = editor.visibleRanges; // including potential folds
+	const editorState = vscode.window.activeTextEditor!;
+	const ranges = editorState.visibleRanges; // including potential folds
 	const visibleLines = calcVisibleLines(ranges);
-	let scrollDistance =
+	const scrollDistance =
 		distance === "halfPage" ? Math.floor(visibleLines / 2) : distance === "page" ? visibleLines : distance;
+	const lastLine = editorState.document.lineCount - 1;
+	const cursorPos = editorState.selection.active.line;
 
 	switch (true) {
 		// Scroll from top boundary
@@ -22,27 +24,18 @@ const scroll = (scroller: Scroller, direction: ScrollDirection, distance: Scroll
 			moveViewport(direction, scrollDistance);
 			moveCursor(direction, scrollDistance);
 			break;
-		// Simulating Neovims behavior, ctrl+e / ctrl+y favors scrolling the viewport solely, instead of moving the cursor simultaneously
-		case scroller === "armin":
-			moveViewport(direction, scrollDistance, "revealCursor");
-			const cursorPosition = editor.selection.active.line;
-			const hasScrollOffContact =
-				(direction === "down" && scrollOff >= cursorPosition - ranges[0].start.line - 1) ||
-				(direction === "up" && scrollOff >= ranges[ranges.length - 1].end.line - cursorPosition);
-			const hasFoldAbove = ranges[0].end.line - cursorPosition <= scrollOff,
-				hasFoldBelow = cursorPosition - ranges[ranges.length - 1].start.line <= scrollOff;
-			if (hasScrollOffContact) {
-				moveCursor(direction, scrollOff < scrollDistance ? scrollOff : scrollDistance);
-				return;
-			}
-			if ((direction === "down" && hasFoldBelow) || (direction === "up" && hasFoldAbove)) {
-				return;
-			}
-			alignViewport();
+		// Move cursor to the last line if the scroll distance would exceed the last line
+		case direction === "down" && cursorPos + scrollDistance >= lastLine:
+			moveCursor(direction, lastLine - cursorPos);
 			break;
-		default:
+		// Simulating Neovims behavior, <C-d> / <C-u> favors moving the cursor in sync
+		case scroller === "berthold":
 			moveViewport(direction, scrollDistance);
 			moveCursor(direction, scrollDistance);
+			break;
+		// While <C-e> / <C-y> & <C-f> / <C-b> favor scrolling the viewport solely until touching the scroll offset
+		default:
+			moveViewport(direction, scrollDistance, "revealCursor");
 			break;
 	}
 
