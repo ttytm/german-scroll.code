@@ -16,10 +16,7 @@ const moveViewport = (direction: ScrollDirection, distance: ScrollDistance, reve
 		to: direction,
 		by: "wrappedLine",
 		value: distance,
-		// `revealCursor` stabilizes armin around folds when touching scrolloff.
-		// Though, brings especially christa out of sync .
-		//
-		// Sizes of folded sections, smooth scrolling, configured scrollDistance, play into this.
+		// Using `revealCursor` only if specified, since combining `moveViewport` with `moveCursor` will distort the scrolling result.
 		// The perfect recipy is yet to be made.
 		revealCursor: revealCursor ? true : false,
 	});
