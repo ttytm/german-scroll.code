@@ -45,6 +45,20 @@ const scroll = (scroller: Scroller, direction: ScrollDirection, distance: Scroll
 			moveCursor(direction, scrollDistance);
 			break;
 	}
+
+	// Check for fresh state after scrolling is finished
+	setTimeout(() => {
+		const editorStateNew = vscode.window.activeTextEditor!;
+		const rangesNew = editorStateNew.visibleRanges;
+		const cursorPos = editorState.selection.active.line;
+
+		const touchesScrollOff =
+			(direction === "down" && scrollOff >= cursorPos - rangesNew[0].start.line - 1) ||
+			(direction === "up" && scrollOff >= rangesNew[rangesNew.length - 1].end.line - cursorPos);
+		if (touchesScrollOff) {
+			moveCursor(direction, scrollOff < scrollDistance ? scrollOff : scrollDistance);
+		}
+	}, 150);
 };
 
 const getConfig = (scroller: string) =>
