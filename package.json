@@ -9,7 +9,7 @@
 		"url": "https://github.com/tobealive/german-scroll.code.git"
 	},
 	"icon": "assets/german-scroll-logo.png",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"engines": {
 		"vscode": "^1.68.0"
 	},
