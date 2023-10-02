@@ -1,4 +1,4 @@
-# ️german-scroll\*
+# ️german-scroll
 
 <div align="center" style="margin-bottom: 2em;">
    <img src="assets/german-scroll-logo.png" width="200" style="margin-bottom: 1em;"/>
