@@ -22,7 +22,7 @@ You get three scrolling motions.
 
 | **Scroller** | **Default Keymaps**        |
 | ------------ | -------------------------- |
-| Armin        | ️️⬆ <kbd>Ctrl+Down</kbd>️    |
+| Armin        | ️️⬆ <kbd>Ctrl+Down</kbd>️     |
 |              | ⬇ <kbd>Ctrl+Up</kbd>       |
 | Berthold     | ⬆ <kbd>Ctrl+PageUp</kbd>   |
 |              | ⬇ <kbd>Ctrl+PageDown</kbd> |
@@ -35,7 +35,7 @@ Links to a quick and dirty video example using german-scroll in VSCodium in comb
 
 <div align="center" style="margin-bottom: 2em;">
    <a href="https://github.com/tobealive/german-scroll.code/discussions/3" target="_blank">
-      <img src="https://github.com/tobealive/storage/blob/main/assets/german-scroll-preview.gif?raw=true" width="800"/>
+      <img src="https://github.com/ttytm/german-scroll.code/assets/34311583/208f2163-daca-49f8-9883-3c98d3526f3f" width="800"/>
    </a>
 </div>
 
@@ -108,8 +108,8 @@ _\*Especially in today's times it's hard to always be politically correct. Addit
 Nothing that would break something but some small things could be observed:
 
 - Scrolling inconsistencies may occur:
-   - During fast scrolling (e.g., pressing and holding the key) with the "smooth scrolling" setting enabled.
-   - During scrolling actions between folded sections.
+  - During fast scrolling (e.g., pressing and holding the key) with the "smooth scrolling" setting enabled.
+  - During scrolling actions between folded sections.
 - Selection becomes invisible when scrolling in VisualMode beyond the currently visible range (it reappears when moving the cursor after scrolling).
 - There should probably be additional settings that allow the user to disable behaviors such as continuing cursor movement when the document boundary is reached.
 
